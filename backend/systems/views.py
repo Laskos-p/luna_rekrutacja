@@ -25,7 +25,6 @@ class HydroponicSystemListCreateAPIView(
     ordering_fields = ['name']
 
     def perform_create(self, serializer):
-        print(serializer)
         serializer.save(user=self.request.user)
 
 hydroponic_system_list_create_view = HydroponicSystemListCreateAPIView.as_view()
@@ -59,7 +58,6 @@ class SensorMeasurementListCreateAPIView(
     def perform_create(self, serializer):
         system_id = self.kwargs.get('pk')
         system = get_object_or_404(HydroponicSystem, pk=system_id, user=self.request.user)
-        print(system)
         serializer.save(hydroponic_system=system)
 
 sensor_measurement_list_create_view = SensorMeasurementListCreateAPIView.as_view()
