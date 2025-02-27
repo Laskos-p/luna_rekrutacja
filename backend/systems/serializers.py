@@ -39,3 +39,4 @@ class SensorMeasurementSerializer(serializers.ModelSerializer):
             'value',
             'timestamp'
         ]
+        read_only_fields = ['hydroponic_system']
