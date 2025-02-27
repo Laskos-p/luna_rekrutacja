@@ -10,6 +10,7 @@ class HydroponicSystemListCreateAPIView(
     serializer_class = HydroponicSystemSerializer
 
     def perform_create(self, serializer):
+        print(serializer)
         serializer.save(user=self.request.user)
 
 hydroponic_system_list_create_view = HydroponicSystemListCreateAPIView.as_view()
