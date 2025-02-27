@@ -1,6 +1,3 @@
-from email.policy import default
-from tkinter.ttk import Treeview
-
 from rest_framework import serializers
 
 from api.serializers import UserPublicSerializer
