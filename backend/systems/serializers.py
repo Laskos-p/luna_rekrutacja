@@ -7,7 +7,11 @@ from .models import HydroponicSystem, SensorMeasurement
 
 
 class HydroponicSystemSerializer(serializers.ModelSerializer):
-    owner = UserPublicSerializer(source='user', read_only=True, default=serializers.CurrentUserDefault())
+    owner = UserPublicSerializer(
+        source='user',
+        read_only=True,
+        default=serializers.CurrentUserDefault()
+    )
     url = serializers.HyperlinkedIdentityField(
         view_name='system-detail',
         lookup_field='pk'
