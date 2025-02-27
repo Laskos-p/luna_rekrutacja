@@ -13,3 +13,12 @@ class HydroponicSystemListCreateAPIView(
         serializer.save()
 
 hydroponic_system_list_create_view = HydroponicSystemListCreateAPIView.as_view()
+
+
+class HydroponicSystemDetailAPIView(
+    generics.RetrieveAPIView
+):
+    queryset = HydroponicSystem.objects.all()
+    serializer_class = HydroponicSystemSerializer
+
+hydroponic_system_detail_view = HydroponicSystemDetailAPIView.as_view()
