@@ -16,7 +16,7 @@ hydroponic_system_list_create_view = HydroponicSystemListCreateAPIView.as_view()
 
 
 class HydroponicSystemDetailAPIView(
-    generics.RetrieveAPIView
+    generics.RetrieveUpdateDestroyAPIView
 ):
     queryset = HydroponicSystem.objects.all()
     serializer_class = HydroponicSystemSerializer
