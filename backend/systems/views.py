@@ -5,11 +5,14 @@ from django.core.serializers import serialize
 from django.shortcuts import get_object_or_404
 from rest_framework import generics
 
+from api.mixins import UserQuerySetMixins
+
 from .models import HydroponicSystem, SensorMeasurement
 from .serializers import HydroponicSystemSerializer, SensorMeasurementSerializer
 
 
 class HydroponicSystemListCreateAPIView(
+    UserQuerySetMixins,
     generics.ListCreateAPIView
 ):
     queryset = HydroponicSystem.objects.all()
@@ -23,6 +26,7 @@ hydroponic_system_list_create_view = HydroponicSystemListCreateAPIView.as_view()
 
 
 class HydroponicSystemDetailAPIView(
+    UserQuerySetMixins,
     generics.RetrieveUpdateDestroyAPIView
 ):
     queryset = HydroponicSystem.objects.all()
@@ -38,7 +42,6 @@ class SensorMeasurementCreateAPIView(
 
     def perform_create(self, serializer):
         system_id = self.kwargs.get('pk')
-        # print(system_id)
         system = get_object_or_404(HydroponicSystem, pk=system_id, user=self.request.user)
         print(system)
         serializer.save(hydroponic_system=system)
