@@ -6,7 +6,7 @@ from rest_framework import serializers
 from api.serializers import UserPublicSerializer
 
 from .validators import unique_system_name_for_user
-from .models import HydroponicSystem
+from .models import HydroponicSystem, SensorMeasurement
 
 
 class HydroponicSystemSerializer(serializers.ModelSerializer):
@@ -26,4 +26,16 @@ class HydroponicSystemSerializer(serializers.ModelSerializer):
         ]
         validators = [
             unique_system_name_for_user
+        ]
+
+
+class SensorMeasurementSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SensorMeasurement
+        fields = [
+            'pk',
+            'hydroponic_system',
+            'name',
+            'value',
+            'timestamp'
         ]
