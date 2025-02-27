@@ -7,5 +7,6 @@ class HydroponicSystemSerializer(serializers.ModelSerializer):
     class Meta:
         model = HydroponicSystem
         fields = [
+            'pk',
             'name'
         ]
