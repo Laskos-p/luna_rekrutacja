@@ -4,6 +4,8 @@ from asgiref.sync import sync_to_async
 from django.core.serializers import serialize
 from django.shortcuts import get_object_or_404
 from rest_framework import generics
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import filters
 
 from api.mixins import UserQuerySetMixins
 
@@ -17,6 +19,10 @@ class HydroponicSystemListCreateAPIView(
 ):
     queryset = HydroponicSystem.objects.all()
     serializer_class = HydroponicSystemSerializer
+
+    filter_backends = [DjangoFilterBackend, filters.OrderingFilter]
+    filterset_fields = ['name']
+    ordering_fields = ['name']
 
     def perform_create(self, serializer):
         print(serializer)
@@ -36,11 +42,14 @@ hydroponic_system_detail_view = HydroponicSystemDetailAPIView.as_view()
 
 
 class SensorMeasurementListCreateAPIView(
-    # UserQuerySetMixins,
     generics.ListCreateAPIView
 ):
     queryset = SensorMeasurement.objects.all()
     serializer_class = SensorMeasurementSerializer
+
+    filter_backends = [DjangoFilterBackend, filters.OrderingFilter]
+    filterset_fields = ['name', 'timestamp', 'value']
+    ordering_fields = ['name', 'timestamp', 'value']
 
     def get_queryset(self):
         system_id = self.kwargs.get('pk')
