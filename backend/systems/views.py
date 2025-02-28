@@ -117,8 +117,8 @@ class SensorMeasurementListCreateAPIView(
     serializer_class = SensorMeasurementSerializer
 
     filter_backends = [DjangoFilterBackend, filters.OrderingFilter]
-    filterset_fields = ['name', 'timestamp', 'value']
-    ordering_fields = ['name', 'timestamp', 'value']
+    filterset_fields = ['sensor_name', 'created_at', 'value']
+    ordering_fields = ['sensor_name', 'created_at', 'value']
 
     @swagger_auto_schema(
         responses={200: SensorMeasurementSerializer(many=True)},
