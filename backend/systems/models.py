@@ -12,6 +12,9 @@ class HydroponicSystem(models.Model):
         on_delete=models.CASCADE
     )
     name = models.CharField(max_length=100)
+    description = models.TextField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
 
 class SensorMeasurement(models.Model):
@@ -19,6 +22,6 @@ class SensorMeasurement(models.Model):
         HydroponicSystem,
         on_delete=models.CASCADE
     )
-    name = models.CharField(max_length=100)
+    sensor_name = models.CharField(max_length=100)
     value = models.FloatField()
-    timestamp = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)

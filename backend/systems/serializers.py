@@ -23,7 +23,9 @@ class HydroponicSystemSerializer(serializers.ModelSerializer):
             'owner',
             'url',
             'pk',
-            'name'
+            'name',
+            'created_at',
+            'updated_at',
         ]
         validators = [
             unique_system_name_for_user
@@ -36,8 +38,8 @@ class SensorMeasurementSerializer(serializers.ModelSerializer):
         fields = [
             'pk',
             'hydroponic_system',
-            'name',
+            'sensor_name',
             'value',
-            'timestamp'
+            'created_at'
         ]
         read_only_fields = ['hydroponic_system']
