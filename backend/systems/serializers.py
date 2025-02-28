@@ -24,6 +24,7 @@ class HydroponicSystemSerializer(serializers.ModelSerializer):
             'url',
             'pk',
             'name',
+            'description',
             'created_at',
             'updated_at',
         ]
