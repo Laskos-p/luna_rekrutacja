@@ -1,9 +1,8 @@
 # Luna rekrutacja
-## Informacje
+## Opis aplikacji
 Aplikacja CRUD w Django, która umożliwia zarządzanie systemami hydroponicznymi
 
-
-## Uruchomienie projektu
+### Uruchomienie projektu
 
 dodaj plik .env. 
 Ustaw zmienne np.:
@@ -37,17 +36,19 @@ Redoc `/redoc/`
 Znajdują się w plikach .json w folderze `backend`
 
 #### Użytkownicy
-admin admin -superuser
-
-user1 password1 -staff
-
+admin admin -superuser <br>
+user1 password1 -staff <br>
 user2 password2 -staff
 
 ### Endpointy
 
+Endpointy `/api/systems` zapewniają sortowanie po kolumnach <br>
+Endpoint `/api/systems/<id>/sensor` zapewnia filtrowanie bo zakresie dat oraz wartości <br>
+Działanie filtrowania i sortowania najłatwiej sprawdzić korzystając z Browsable API <br>
 `/api/systems` - pobieranie listy systemów oraz wstawianie nowego systemu
 `/api/systems/<id>` - pobieranie szczegółów systemu, usuwanie oraz modyfikacja systemu
 `/api/systems/<id>/sensor` - pobieranie listy pomiarów dla danego systemu oraz wstawianie nowego pomiaru
 
 `/api/token` - generowanie tokenów do uwierzytelniania
+
 
