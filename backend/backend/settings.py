@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'drf_yasg',
     'corsheaders',
     'rest_framework',
     'django_filters',
@@ -155,6 +156,19 @@ REST_FRAMEWORK = {
 
 SIMPLE_JWT = {
     "AUTH_HEADER_TYPES": ["Bearer"],
-    "ACCESS_TOKEN_LIFETIME": datetime.timedelta(seconds=30),
-    "REFRESH_TOKEN_LIFETIME": datetime.timedelta(minutes=1),
+    "ACCESS_TOKEN_LIFETIME": datetime.timedelta(hours=1),
+    "REFRESH_TOKEN_LIFETIME": datetime.timedelta(hours=2),
+}
+
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'Bearer': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header',
+        }
+    },
+    'LOGIN_URL': '/admin',
+    'LOGOUT_URL': '/admin/logout',
+    'USE_SESSION_AUTH': True,
 }
