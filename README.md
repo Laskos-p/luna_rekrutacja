@@ -2,6 +2,18 @@
 
 ## Uruchomienie projektu
 
-1. ```pip install -r requirements.txt```
-2. ```cd backend```
-3. ```python manage.py runserver```
+`docker compose up --build`
+
+### Dokumentacja API
+
+Swagger-ui `/swagger/`
+
+Redoc `/redoc/`
+
+### Przykładowi użytkownicy
+
+admin admin -superuser
+
+user1 password1 -staff
+
+user2 password2 -staff
