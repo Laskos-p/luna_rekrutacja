@@ -35,6 +35,7 @@ services:
      - .env
    command: >
      sh -c "python manage.py collectstatic --noinput &&
+     python manage.py loaddata users.json &&
      gunicorn --bind 0.0.0.0:8000 backend.wsgi:application"
 volumes:
    postgres_data:
