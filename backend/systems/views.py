@@ -6,7 +6,7 @@ from rest_framework import filters
 
 from api.mixins import UserQuerySetMixins
 
-from .filters import SensorMeasurementDateTimeFilter
+from .filters import SensorMeasurementFilter
 from .models import HydroponicSystem, SensorMeasurement
 from .serializers import (
     HydroponicSystemSerializer,
@@ -118,7 +118,7 @@ class SensorMeasurementListCreateAPIView(
     serializer_class = SensorMeasurementSerializer
 
     filter_backends = [DjangoFilterBackend, filters.OrderingFilter]
-    filterset_class = SensorMeasurementDateTimeFilter
+    filterset_class = SensorMeasurementFilter
     filterset_fields = ['sensor_name', 'created_at', 'value']
     ordering_fields = ['sensor_name', 'created_at', 'value']
 
